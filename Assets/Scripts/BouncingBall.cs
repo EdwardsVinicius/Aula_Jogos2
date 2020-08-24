@@ -5,6 +5,7 @@ public class BouncingBall : MonoBehaviour
     Rigidbody rb;
     bool bouncing;
     public float bounceForce = 3;
+    public float speed = 3;
     float vertical = 0;
     float horizontal = 0;
     public static bool stop;
@@ -12,7 +13,7 @@ public class BouncingBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TryGetComponent(out rb);
+        rb = gameObject.GetComponent<Rigidbody>();
         stop = false;
     }
 
@@ -29,8 +30,8 @@ public class BouncingBall : MonoBehaviour
     {
         if (!rb || stop) return;
 
-        rb.AddForce(0, 0, 2 * vertical, ForceMode.Force);
-        rb.AddForce(2 * horizontal, 0, 0, ForceMode.Force);
+        //rb.AddForce(0, 0, speed * vertical, ForceMode.Force);
+        rb.AddForce(0, 0, speed * horizontal, ForceMode.Force);
 
         if (Input.GetKey(KeyCode.Space))
         {

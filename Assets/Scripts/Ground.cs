@@ -13,9 +13,9 @@ public class Ground : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.TryGetComponent(out Rigidbody rb);
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         if (rb) StartCoroutine(Reset(rb));
-        // other.transform.position = startPoint.position;
+        other.transform.position = startPoint.position;
     }
 
     IEnumerator Reset (Rigidbody rb)

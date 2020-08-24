@@ -40,7 +40,7 @@ public class Camera : MonoBehaviour
         position.x =
             Mathf.Lerp(
                 transform.position.x,
-                ball.transform.position.x,
+                ball.transform.position.x + distance,
                 time);
 
         // no valor de chegada do eixo Z vamos subtrair o valor de distance
@@ -48,7 +48,7 @@ public class Camera : MonoBehaviour
         position.z =
             Mathf.Lerp(
                 transform.position.z,
-                ball.transform.position.z-distance,
+                ball.transform.position.z,
                 time);
 
         // no final, devolvemos os valores calculados para o Transform
