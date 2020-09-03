@@ -4,16 +4,16 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public Transform startPoint;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         if (rb) StartCoroutine(Reset(rb));
         other.transform.position = startPoint.position;
     }

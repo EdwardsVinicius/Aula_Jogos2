@@ -15,6 +15,7 @@ public class BouncingBall : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         stop = false;
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     // Update is called once per frame
@@ -24,11 +25,13 @@ public class BouncingBall : MonoBehaviour
 
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal");
+        
     }
 
     private void FixedUpdate()
     {
         if (!rb || stop) return;
+
 
         //rb.AddForce(0, 0, speed * vertical, ForceMode.Force);
         rb.AddForce(0, 0, speed * horizontal, ForceMode.Force);
